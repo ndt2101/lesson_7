@@ -59,8 +59,12 @@ class SleepTrackerFragment : Fragment() {
         binding.sleepList.layoutManager = manager
 
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer { nights ->
+//            nights?.let {
+////                adapter.submitList(nights) // báo cho recycleView biết có thay đổi data để so sánh bằng diffCallBack để chỉnh sửa hiển thị viewHolder
+//
+//            }
             nights?.let {
-                adapter.submitList(nights) // báo cho recycleView biết có thay đổi data để so sánh bằng diffCallBack để chỉnh sửa hiển thị viewHolder
+                adapter.addHeaderAndSubmitList(nights)
             }
         })// check xem co null k, neu k null thi thuc hien trong let
 
